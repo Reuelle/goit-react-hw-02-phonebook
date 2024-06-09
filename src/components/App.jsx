@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 import PhonebooksForm from './ContactForm/ContactForm';
 import PhonebookList from './ContactList/ContactList';
 import PhonebooksFilter from './ContactFilter/ContactFilter';
-import contacts from './SampleData.Js';
+import contacts from './SampleData';
 import styles from './Contact.module.css';
 
 class App extends Component {
@@ -12,6 +12,11 @@ class App extends Component {
     contacts: [...contacts],
     filter: '',
   };
+
+  componentDidMount() {
+    // Debugging initial state
+    console.log('Initial contacts:', this.state.contacts);
+  }
 
   removeContact = id => {
     this.setState(({ contacts }) => {
@@ -81,17 +86,19 @@ class App extends Component {
     const isContacts = Boolean(contacts.length);
 
     return (
-      <div className={styles.wrapper}>
-        <div className={styles.block}>
-          <h1>Phonebook</h1>
-          <PhonebooksForm onSubmit={addContact} />
-        </div>
-        <div className={styles.block}>
-          <PhonebooksFilter handleChange={handleFilter} />
-          {isContacts && (
-            <PhonebookList removeContact={removeContact} contacts={contacts} />
-          )}
-          {!isContacts && <p>No contacts in list</p>}
+      <div className={styles['center-container']}>
+        <div className={styles.wrapper}>
+          <div className={styles.block}>
+            <h1>Phonebook</h1>
+            <PhonebooksForm onSubmit={addContact} />
+          </div>
+          <div className={styles.block}>
+            <PhonebooksFilter handleChange={handleFilter} />
+            {isContacts && (
+              <PhonebookList removeContact={removeContact} contacts={contacts} />
+            )}
+            {!isContacts && <p>No contacts in list</p>}
+          </div>
         </div>
       </div>
     );
