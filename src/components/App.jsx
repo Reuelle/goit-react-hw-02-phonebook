@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 import PhonebooksForm from './ContactForm/ContactForm';
 import PhonebookList from './ContactList/ContactList';
 import PhonebooksFilter from './ContactFilter/ContactFilter';
-import contacts from './SampleData.json';
+import contacts from './SampleData.Js';
 import styles from './Contact.module.css';
 
 class App extends Component {
