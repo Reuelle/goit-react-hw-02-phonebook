@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import styles from './Contactfilter.module.scss';
+import styles from './ContactFilter.module.css';
 
 const PhonebooksFilter = ({ handleChange }) => {
   return (

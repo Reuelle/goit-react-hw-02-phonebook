@@ -1,9 +1,9 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import inititalState from './initialState';
+import inititalState from './InitialState';
 
-import styles from './phonebooks-form.module.scss';
+import styles from './ContactForm.module.css';
 
 class PhonebooksForm extends Component {
   state = { ...inititalState };

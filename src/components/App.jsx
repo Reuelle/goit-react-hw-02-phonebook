@@ -1,12 +1,13 @@
+// src/components/App.jsx
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import PhonebooksForm from './ContactForm/ContactForm';
 import PhonebookList from './ContactList/ContactList';
 import PhonebooksFilter from './ContactFilter/ContactFilter';
-import contacts from './SampleData.Json';
-import styles from './Contact.module.scss';
+import contacts from './SampleData.json';
+import styles from './Contact.module.css';
 
-class Phonebooks extends Component {
+class App extends Component {
   state = {
     contacts: [...contacts],
     filter: '',
@@ -20,8 +21,8 @@ class Phonebooks extends Component {
   };
 
   addContact = ({ name, number }) => {
-    if (this.isDublicate(name, number)) {
-      alert(`${name}: ${number} is already ixist`);
+    if (this.isDuplicate(name, number)) {
+      alert(`${name}: ${number} already exists`);
       return false;
     }
 
@@ -43,7 +44,7 @@ class Phonebooks extends Component {
     this.setState({ filter: target.value });
   };
 
-  isDublicate(name, number) {
+  isDuplicate(name, number) {
     const normalizedTitle = name.toLowerCase();
     const normalizedAuthor = number.toLowerCase();
     const { contacts } = this.state;
@@ -97,4 +98,4 @@ class Phonebooks extends Component {
   }
 }
 
-export default Phonebooks;
+export default App;

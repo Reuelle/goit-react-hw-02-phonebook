@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import styles from './Contactlist.module.scss';
+import styles from './ContactList.module.css';
 
 const PhonebookList = ({ removeContact, contacts }) => {
   const myContacts = contacts.map(({ id, name, number }) => (
