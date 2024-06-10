@@ -6,6 +6,7 @@
     border: transparent;
     border-radius: 4px;
     cursor: pointer;
+   text-transform: capitalize;
 
     &:hover {
         color: rgb(58, 25, 58);
