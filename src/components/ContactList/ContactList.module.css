@@ -1,8 +1,8 @@
 .btn {
     width: 70px;
     padding: 2px;
-    background: rgb(116, 105, 121);
-    color: rgb(58, 25, 58);
+    background: rgb(167, 163, 168);
+    color: white;
     border: transparent;
     border-radius: 4px;
     cursor: pointer;
@@ -10,7 +10,7 @@
 
     &:hover {
         color: white;
-        background: rgb(167, 163, 168);
+        background: rgb(116, 105, 121);
     }
 }
 .list {
