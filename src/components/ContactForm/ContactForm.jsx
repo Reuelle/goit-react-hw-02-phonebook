@@ -15,7 +15,7 @@ class PhonebooksForm extends Component {
     const { name, number } = this.state;
 
     if (!name || !number) {
-      alert('Please fill out this field');
+      alert('Please fill in this field');
       return;
     }
 
