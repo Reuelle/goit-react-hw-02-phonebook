@@ -11,7 +11,7 @@ const PhonebookList = ({ removeContact, contacts }) => {
         onClick={() => removeContact(id)}
         type="button"
       >
-        Remove
+        Delete
       </button>
     </li>
   ));
