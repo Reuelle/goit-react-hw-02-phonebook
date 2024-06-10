@@ -55,7 +55,7 @@ class PhonebooksForm extends Component {
           />
         </div>
         <button className={styles.btn} type="submit">
-          Add contact
+          ADD CONTACT
         </button>
       </form>
     );
