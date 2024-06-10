@@ -7,56 +7,55 @@ import inititalState from './InitialState';
 import styles from './ContactForm.module.css';
 
 class PhonebooksForm extends Component {
-  state = { ...inititalState };
-
-  handleSubmit = e => {
-    e.preventDefault();
-    const { onSubmit } = this.props;
-    const result = onSubmit({ ...this.state });
-    if (result) {
-      this.reset();
-    }
+  state = {
+    name: '',
+    number: '',
   };
-
-  reset() {
-    this.setState({ ...inititalState });
-  }
 
   handleChange = ({ target }) => {
     const { name, value } = target;
-    this.setState({
-      [name]: value,
-    });
+    this.setState({ [name]: value });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, number } = this.state;
+
+    if (!name || !number) {
+      alert('Please fill out this field');
+      return;
+    }
+
+    this.props.onSubmit({ name, number });
+    this.setState({ name: '', number: '' });
   };
 
   render() {
-    const { handleChange, handleSubmit } = this;
     const { name, number } = this.state;
-
     return (
-      <form onSubmit={handleSubmit}>
-        <div className={styles.formGroup}>
-          <label className={styles.text}>Name</label>
+      <form onSubmit={this.handleSubmit} className={styles.form}>
+        <label>
+          Name
           <input
-            className={styles.input}
+            type="text"
             name="name"
             value={name}
-            onChange={handleChange}
-            placeholder="Enter name"
+            onChange={this.handleChange}
+            required
           />
-        </div>
-        <div className={styles.formGroup}>
-          <label className={styles.text}>Number</label>
+        </label>
+        <label>
+          Number
           <input
-            className={styles.input}
+            type="tel"
             name="number"
             value={number}
-            onChange={handleChange}
-            placeholder="Enter number"
+            onChange={this.handleChange}
+            required
           />
-        </div>
-        <button className={styles.btn} type="submit">
-          ADD CONTACT
+        </label>
+        <button type="submit" className={styles.button}>
+          Add Contact
         </button>
       </form>
     );
