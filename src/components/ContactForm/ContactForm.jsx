@@ -1,5 +1,4 @@
 
-
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 
@@ -8,54 +7,57 @@ import inititalState from './InitialState';
 import styles from './ContactForm.module.css';
 
 class PhonebooksForm extends Component {
-  state = {
-    name: '',
-    number: '',
+  state = { ...inititalState };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const { onSubmit } = this.props;
+    const result = onSubmit({ ...this.state });
+    if (result) {
+      this.reset();
+    }
   };
+
+  reset() {
+    this.setState({ ...inititalState });
+  }
 
   handleChange = ({ target }) => {
     const { name, value } = target;
-    this.setState({ [name]: value });
-  };
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const { name, number } = this.state;
-
-    if (!name || !number) {
-      alert('Please fill out this field');
-      return;
-    }
-
-    this.props.onSubmit({ name, number });
-    this.setState({ name: '', number: '' });
+    this.setState({
+      [name]: value,
+    });
   };
 
   render() {
+    const { handleChange, handleSubmit } = this;
     const { name, number } = this.state;
+
     return (
-      <form onSubmit={this.handleSubmit} className={styles.form}>
-        <label>
-          Name
+      <form onSubmit={handleSubmit}>
+        <div className={styles.formGroup}>
+          <label className={styles.text}>Name</label>
           <input
-            type="text"
+            className={styles.input}
             name="name"
             value={name}
-            onChange={this.handleChange}
-            required
+            onChange={handleChange}
+            placeholder="Enter name"
           />
-        </label>
-        <label>
-          Number
+        </div>
+        <div className={styles.formGroup}>
+          <label className={styles.text}>Number</label>
           <input
-            type="tel"
+            className={styles.input}
             name="number"
             value={number}
-            onChange={this.handleChange}
-            required
+            onChange={handleChange}
+            placeholder="Enter number"
           />
-        </label>
-        <button type="submit" className={styles.button}>Add Contact</button>
+        </div>
+        <button className={styles.btn} type="submit">
+          ADD CONTACT
+        </button>
       </form>
     );
   }
