@@ -9,9 +9,16 @@ import styles from './ContactForm.module.css';
 class PhonebooksForm extends Component {
   state = { ...inititalState };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     const { onSubmit } = this.props;
+    const { name, number } = this.state;
+
+    if (!name || !number) {
+      alert('Please fill out this field');
+      return;
+    }
+
     const result = onSubmit({ ...this.state });
     if (result) {
       this.reset();
@@ -34,7 +41,7 @@ class PhonebooksForm extends Component {
     const { name, number } = this.state;
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.formGroup}>
           <label className={styles.text}>Name</label>
           <input
@@ -43,6 +50,7 @@ class PhonebooksForm extends Component {
             value={name}
             onChange={handleChange}
             placeholder="Enter name"
+            required
           />
         </div>
         <div className={styles.formGroup}>
@@ -53,10 +61,11 @@ class PhonebooksForm extends Component {
             value={number}
             onChange={handleChange}
             placeholder="Enter number"
+            required
           />
         </div>
         <button className={styles.btn} type="submit">
-          ADD CONTACT
+          <strong>ADD CONTACT</strong>
         </button>
       </form>
     );
