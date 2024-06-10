@@ -1,16 +1,16 @@
 .btn {
     width: 70px;
     padding: 2px;
-    background: rgb(167, 163, 168);
-    color: white;
+    background: rgb(116, 105, 121);
+    color: rgb(58, 25, 58);
     border: transparent;
     border-radius: 4px;
     cursor: pointer;
    text-transform: capitalize;
 
     &:hover {
-        color: rgb(58, 25, 58);
-        background: rgb(116, 105, 121);
+        color: white;
+        background: rgb(167, 163, 168);
     }
 }
 .list {
